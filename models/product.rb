@@ -1,5 +1,5 @@
-require('../db/sql_runner.rb')
-require_relative('./manufacturer.rb')
+require_relative('../db/sql_runner')
+require_relative('./manufacturer')
 
 class Product
   attr_reader :id
