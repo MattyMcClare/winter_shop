@@ -17,3 +17,8 @@ ver 0.0.2
 -fixed bug for map_manufacturers method
 -added methods find, update and delete for Manufacturer class
 -added Atomic manufacturer in seed file
+
+ver 0.0.3
+-added layout.erb page with basic html
+-added products.erb page
+-new get route /winter_shop in controller
