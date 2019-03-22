@@ -19,7 +19,7 @@ class Manufacturer
     @id = id
   end
 
-  def map_manufacturers(manufacturers_data)
+  def self.map_manufacturers(manufacturers_data)
     return manufacturers_data.map { |data| Manufacturer.new(data) }
   end
 
@@ -28,6 +28,31 @@ class Manufacturer
     manufacturers_data = SqlRunner.run(sql)
     result = map_manufacturers(manufacturers_data)
     return result
+  end
+
+  def self.find(id)
+    sql = 'SELECT * FROM manufacturers
+    WHERE id = $1'
+    values = [id]
+    found_manufacturer = SqlRunner.run(sql, values).first
+    result = Product.new(found_manufacturer)
+    return result
+  end
+
+  def update()
+    sql = 'UPDATE manufacturers SET
+    (name, contact, address) =
+    ($1, $2, $3)
+    WHERE id = $4'
+    values = [@name, @contact, @address, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def delete()
+    sql = 'DELETE FROM manufacturers
+    WHERE id = $1'
+    values = [@id]
+    SqlRunner.run(sql, values)
   end
 
   def self.delete_all()

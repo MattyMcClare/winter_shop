@@ -9,7 +9,15 @@ manufacturer_salomon = Manufacturer.new({
   'contact' => '+442035100639',
   'address' => '8 S Gyle Cres Ln Edinburgh, EH129EG'
   })
+
+manufacturer_atomic = Manufacturer.new({
+  'name' => 'Atomic',
+  'contact' => '+442035100656',
+  'address' => 'AMER SPORTS UK LTD Theta Building, Lyon Way Frimley, GU16 7ER, Surrey'
+  })
+
 manufacturer_salomon.save()
+manufacturer_atomic.save()
 
 product_salomon1 = Product.new({
   'name' => 'Salomon Ultimate Ride Hybrid Camber Snowboard',
@@ -45,5 +53,7 @@ product_salomon1.save()
 product_salomon2.save()
 product_salomon3.save()
 
-product_salomon2.name = 'Nike'
-product_salomon2.update()
+# manufacturer_salomon.name = 'Nike'
+# manufacturer_salomon.update()
+
+# manufacturer_atomic.delete()
