@@ -8,7 +8,22 @@ get '/' do
   redirect('/winter_shop')
 end
 
-get '/winter_shop' do
+get '/winter_shop' do #INDEX
   @products = Product.all()
-  erb(:products)
+  erb(:index)
+end
+
+get '/winter_shop/new' do #NEW
+  erb(:new)
+end
+
+get '/winter_shop/:id' do #SHOW
+  @product = Product.find(params[:id])
+  erb(:product)
+end
+
+post '/winter_shop' do #CREATE
+  product = Product.new(params)
+  product.save()
+  redirect('/winter_shop')
 end

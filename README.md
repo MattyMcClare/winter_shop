@@ -22,3 +22,10 @@ ver 0.0.3
 -added layout.erb page with basic html
 -added products.erb page
 -new get route /winter_shop in controller
+
+ver 0.0.4
+-changed products.erb to index.erb
+-added for loop in index.erb
+-created new.erb and form
+-added create, new and show route
+-added list with home and add product in layout page
