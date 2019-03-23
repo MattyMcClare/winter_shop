@@ -29,3 +29,8 @@ ver 0.0.4
 -created new.erb and form
 -added create, new and show route
 -added list with home and add product in layout page
+
+ver 0.0.5
+-added update and delete route
+-created edit.erb with form
+-changed winter_shop routes to winter-shop (fix)

@@ -2,6 +2,6 @@
 <% for product in @products %>
 <p><%=  product.name() %></p>
 <p>Stock Qty: <%=  product.stock_quantity() %></p>
-<a href="/winter_shop/<%= product.id %>">More Info</a>
+<a href="/winter-shop/<%= product.id %>">More Info</a>
 <p>--------------------------------------</p>
 <% end %>

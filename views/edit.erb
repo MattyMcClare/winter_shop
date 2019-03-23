@@ -1,6 +1,6 @@
-<h4>New Product</h4>
+<h4>Edit Product</h4>
 
-<form action="/winter-shop" method="POST">
+<form action="/winter-shop/<%= @product.id %>" method="POST">
   <label for="name">Name:</label>
   <input id="name" name="name" type="text">
   <label for="description">Description:</label>
@@ -15,5 +15,6 @@
   <input id="manufacturer-id" name="manufacturer_id" type="text">
   <label for="category-id">Category:</label>
   <input id="category-id" name="category_id" type="text">
-  <input value="Add Product" type="submit">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <input value="Edit Product" type="submit">
 </form>

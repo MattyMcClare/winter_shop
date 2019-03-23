@@ -6,3 +6,10 @@
 <p>Selling price: <%= @product.selling_price %></p>
 <p>Manufacturer: <%= @product.manufacturer_id %></p>
 <p>Category: <%= @product.category_id %></p>
+
+<a href="/winter-shop/<%= @product.id %>/edit">Edit Product</a>
+
+<form action="/winter-shop/<%= @product.id %>/delete" method="POST">
+  <input id="hidden" name="_method" type="hidden" value="delete">
+  <input type="submit" value="Delete Product">
+</form>
