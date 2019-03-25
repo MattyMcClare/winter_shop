@@ -46,3 +46,10 @@ ver 0.0.7
 
 ver 0.1.0
 -added low stock and out of stock highlighter
+
+ver 0.1.1
+-created new table for category
+-added new seed for categories
+-added CRUD for category class
+-created index file for category
+-added index route for category

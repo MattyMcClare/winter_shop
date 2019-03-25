@@ -1,8 +1,11 @@
 require_relative('../models/product')
 require_relative('../models/manufacturer')
+require_relative('../models/category')
 
-Product.delete_all()
+Category.delete_all()
 Manufacturer.delete_all()
+Product.delete_all()
+
 
 manufacturer_salomon = Manufacturer.new({
   'name' => 'Salomon',
@@ -86,7 +89,6 @@ product_rossignol1 = Product.new({
   'category_id' => 1
   })
 
-
 product_salomon1.save()
 product_salomon2.save()
 product_salomon3.save()
@@ -94,8 +96,24 @@ product_atomic1.save()
 product_atomic2.save()
 product_rossignol1.save()
 
+category_snowboards = Category.new({
+  'name' => 'Snowboards'
+  })
 
-# manufacturer_salomon.name = 'Nike'
-# manufacturer_salomon.update()
+category_skis = Category.new({
+  'name' => 'Skis'
+  })
+
+category_helmets = Category.new({
+  'name' => 'Helmets'
+  })
+
+category_snowboards.save()
+category_skis.save()
+category_helmets.save()
+
+
+# category_skis.name = 'Nike'
+# category_skis.update()
 
 # manufacturer_atomic.delete()

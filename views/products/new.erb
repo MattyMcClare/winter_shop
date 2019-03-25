@@ -13,10 +13,10 @@
   <input id="selling-price" name="selling_price" type="number">
 
   <select  id="manufacturer-id" name="manufacturer_id">
-      <% for manufacturer in @manufacturers %>
-        <option id="manufacturer-id" name="manufacturer_id" value="<%= manufacturer.id %>"><%= manufacturer.name %></option>
-      <% end %>
-    </select>
+    <% for manufacturer in @manufacturers %>
+      <option id="manufacturer-id" name="manufacturer_id" value="<%= manufacturer.id %>"><%= manufacturer.name %></option>
+    <% end %>
+  </select>
 
   <label for="category-id">Category:</label>
   <input id="category-id" name="category_id" type="text">

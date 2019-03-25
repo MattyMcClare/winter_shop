@@ -1,5 +1,16 @@
 <p>Products Page</p>
 
+<form action="/product" method="GET">
+
+  <select  id="manufacturer-id" name="manufacturer_id">
+    <option value="">All</option>
+    <% for manufacturer in @manufacturers %>
+      <option id="manufacturer-id" name="manufacturer_id" value="<%= manufacturer.id %>"><%= manufacturer.name %></option>
+    <% end %>
+  </select>
+  <input type="submit">
+</form>
+
 <% for product in @products %>
   <% if product.stock_quantity == 0 %>
     <div class="red">

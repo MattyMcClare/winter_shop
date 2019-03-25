@@ -1,45 +1,44 @@
+require('sinatra')
+require('sinatra/contrib/all')
+# require_relative('../models/product')
+require_relative('../models/category')
+also_reload('../models/*')
 
-
-get '/' do
-  redirect('/product')
+get '/category' do #INDEX
+  @categories = Category.all()
+  erb :'categories/index'
 end
-
-get '/product' do #INDEX
-  @products = Product.all()
-  erb :products
-end
-
-get '/product/new' do #NEW
-  @manufacturers = Manufacturer.all()
-  erb :new
-end
-
-get '/product/:id' do #SHOW
-  @product = Product.find(params[:id])
-  erb :product
-end
-
-post '/product' do #CREATE
-  product = Product.new(params)
-  product.save()
-  redirect('/product')
-end
-
-get '/product/:id/edit' do #EDIT
-  @product = Product.find(params[:id])
-  @manufacturers = Manufacturer.all()
-  erb :edit
-end
-
-patch '/product/:id' do #UPDATE
-  @product = Product.find(params[:id])
-  @product = Product.new(params)
-  @product.update()
-  redirect to "/product/#{@product.id}"
-end
-
-delete '/product/:id/delete' do #DELETE
-  @product = Product.find(params[:id])
-  @product.delete()
-  redirect('/product')
-end
+#
+# get '/manufacturer/new' do #NEW
+#   @manufacturers = Manufacturer.all()
+#   erb :'manufacturers/new'
+# end
+#
+# get '/manufacturer/:id' do #SHOW
+#   @manufacturer = Manufacturer.find(params[:id])
+#   erb :'manufacturers/show'
+# end
+#
+# post '/manufacturer' do #CREATE
+#   manufacturer = Manufacturer.new(params)
+#   manufacturer.save()
+#   redirect('/manufacturer')
+# end
+#
+# get '/manufacturer/:id/edit' do #EDIT
+#   @manufacturer = Manufacturer.find(params[:id])
+#   erb :'manufacturers/edit'
+# end
+#
+# patch '/manufacturer/:id' do #UPDATE
+#   @manufacturer = Manufacturer.find(params[:id])
+#   @manufacturer = Manufacturer.new(params)
+#   @manufacturer.update()
+#   redirect to "/manufacturer/#{@manufacturer.id}"
+# end
+#
+# delete '/manufacturer/:id/delete' do #DELETE
+#   @manufacturer = Manufacturer.find(params[:id])
+#   @manufacturer.delete()
+#   redirect('/manufacturer')
+# end

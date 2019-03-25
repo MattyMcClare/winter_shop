@@ -2,10 +2,14 @@ require('sinatra')
 require('sinatra/contrib/all')
 require_relative('../models/product')
 require_relative('../models/manufacturer')
+require_relative('../models/category')
 also_reload('../models/*')
 
 get '/product' do #INDEX
-  @products = Product.all()
+  @manufacturers = Manufacturer.all()
+  manufacturer_id = params[:manufacturer_id]
+  @products = Product.all if manufacturer_id.nil? || manufacturer_id.empty?
+  @products = Product.find_by_manufacturer(manufacturer_id) unless manufacturer_id.nil? || manufacturer_id.empty?
   erb :'products/index'
 end
 

@@ -1,0 +1,11 @@
+<h4>Category Page</h4>
+
+<% for category in @categories %>
+  <div>
+    <p><%= category.name %></p>
+    <a href="/category/<% category.id %>/edit">Edit</a>
+    <form action="/category/<% category.id %>/delete">
+      <input type="submit">
+    </form>
+  </div>
+<% end %>

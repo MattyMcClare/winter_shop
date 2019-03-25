@@ -1,5 +1,6 @@
 require_relative('../db/sql_runner')
 require_relative('./manufacturer')
+require_relative('./category')
 
 class Product
   attr_reader :id
@@ -22,6 +23,15 @@ class Product
   #   result = map_products(out_of_stock)
   #   return result
   # end
+
+  def self.find_by_manufacturer(manufacturer_id)
+    sql = 'SELECT * FROM products
+    WHERE manufacturer_id = $1'
+    values = [manufacturer_id]
+    all_by_manufacturer = SqlRunner.run(sql, values)
+    result = map_products(all_by_manufacturer)
+    return result
+  end
 
   def manufacturer
     sql = 'SELECT * FROM manufacturers

@@ -1,5 +1,11 @@
 DROP TABLE IF EXISTS products;
 DROP TABLE IF EXISTS manufacturers;
+DROP TABLE IF EXISTS categories;
+
+CREATE TABLE categories(
+  id SERIAL4 PRIMARY KEY,
+  name VARCHAR(255)
+);
 
 CREATE TABLE manufacturers(
   id SERIAL4 PRIMARY KEY,
