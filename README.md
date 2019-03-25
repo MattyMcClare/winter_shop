@@ -43,3 +43,6 @@ ver 0.0.6
 ver 0.0.7
 -added index, show, edit, update and delete routes
 -app.rb moved to main folder
+
+ver 0.1.0
+-added low stock and out of stock highlighter

@@ -15,6 +15,14 @@ class Product
     @category_id = options['category_id'].to_i
   end
 
+  # def self.out_of_stock
+  #   sql = 'SELECT * FROM products
+  #   WHERE stock_quantity = 0'
+  #   out_of_stock = SqlRunner.run(sql)
+  #   result = map_products(out_of_stock)
+  #   return result
+  # end
+
   def manufacturer
     sql = 'SELECT * FROM manufacturers
     WHERE id = $1'

@@ -69,7 +69,7 @@ product_atomic1 = Product.new({
 product_atomic2 = Product.new({
   'name' => 'Atomic Redster S9 + X12 TLR 18/19',
   'description' => 'Size 160cm Colour Red, Black Deck, Red/Black Base Year 2018',
-  'stock_quantity' => 5,
+  'stock_quantity' => 0,
   'buying_cost' => 400,
   'selling_price' => 650,
   'manufacturer_id' => manufacturer_atomic.id,
@@ -93,6 +93,7 @@ product_salomon3.save()
 product_atomic1.save()
 product_atomic2.save()
 product_rossignol1.save()
+
 
 # manufacturer_salomon.name = 'Nike'
 # manufacturer_salomon.update()
