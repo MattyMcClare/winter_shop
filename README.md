@@ -34,3 +34,8 @@ ver 0.0.5
 -added update and delete route
 -created edit.erb with form
 -changed winter_shop routes to winter-shop (fix)
+
+ver 0.0.6
+-refactored folder Controler
+-refactored products routes
+-added app.rb
