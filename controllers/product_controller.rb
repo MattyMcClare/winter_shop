@@ -1,6 +1,5 @@
 require('sinatra')
 require('sinatra/contrib/all')
-set :views, Proc.new { File.join(root, "../views") }
 require_relative('../models/product')
 require_relative('../models/manufacturer')
 also_reload('../models/*')

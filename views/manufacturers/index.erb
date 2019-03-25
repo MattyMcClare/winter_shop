@@ -1,0 +1,6 @@
+<p>Manufacturer Page</p>
+<% for manufacturer in @manufacturers %>
+<p><%=  manufacturer.name() %></p>
+<a href="/manufacturer/<%= manufacturer.id %>">More Info</a>
+<p>--------------------------------------</p>
+<% end %>

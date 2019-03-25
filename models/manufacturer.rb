@@ -35,7 +35,7 @@ class Manufacturer
     WHERE id = $1'
     values = [id]
     found_manufacturer = SqlRunner.run(sql, values).first
-    result = Product.new(found_manufacturer)
+    result = Manufacturer.new(found_manufacturer)
     return result
   end
 

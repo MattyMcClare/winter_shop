@@ -39,3 +39,7 @@ ver 0.0.6
 -refactored folder Controler
 -refactored products routes
 -added app.rb
+
+ver 0.0.7
+-added index, show, edit, update and delete routes
+-app.rb moved to main folder

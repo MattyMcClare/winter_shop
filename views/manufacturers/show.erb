@@ -1,0 +1,11 @@
+<h4><%= @manufacturer.name() %></h4>
+
+<p>Contact: <%= @manufacturer.contact() %></p>
+<p>Address: <%= @manufacturer.address() %></p>
+
+<a href="/manufacturer/<%= @manufacturer.id() %>/edit">Edit Product</a>
+
+<form action="/manufacturer/<%= @manufacturer.id() %>/delete" method="POST">
+  <input id="hidden" name="_method" type="hidden" value="delete">
+  <input type="submit" value="Delete Product">
+</form>

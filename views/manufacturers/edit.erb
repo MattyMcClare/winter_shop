@@ -1,0 +1,12 @@
+<h4>Edit Manufacturer</h4>
+
+<form action="/manufacturer/<%= @manufacturer.id %>" method="POST">
+  <label for="name">Name:</label>
+  <input id="name" name="name" type="text" value="<%= @manufacturer.name() %>">
+  <label for="contact">Contact:</label>
+  <input id="contact" name=contact type="text" value="<%= @manufacturer.contact() %>">
+  <label for="address">Address:</label>
+  <input id="address" name="address" type="text" value="<%= @manufacturer.address() %>">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <input value="Update Manufacturer" type="submit">
+</form>
