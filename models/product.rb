@@ -15,6 +15,14 @@ class Product
     @category_id = options['category_id'].to_i
   end
 
+  def manufacturer
+    sql = 'SELECT * FROM manufacturers
+    WHERE id = $1'
+    values = [@manufacturer_id]
+    result = SqlRunner.run(sql, values).first
+    return Manufacturer.new(result)
+  end
+
   def save()
     sql = 'INSERT INTO products (
     name,

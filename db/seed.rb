@@ -16,8 +16,15 @@ manufacturer_atomic = Manufacturer.new({
   'address' => 'AMER SPORTS UK LTD Theta Building, Lyon Way Frimley, GU16 7ER, Surrey'
   })
 
+manufacturer_rossignol = Manufacturer.new({
+  'name' => 'Rossignol',
+  'contact' => '+441316192812',
+  'address' => '15 Dunivaig Rd, Glasgow G33 4TT'
+  })
+
 manufacturer_salomon.save()
 manufacturer_atomic.save()
+manufacturer_rossignol.save()
 
 product_salomon1 = Product.new({
   'name' => 'Salomon Ultimate Ride Hybrid Camber Snowboard',
@@ -49,9 +56,43 @@ product_salomon3 = Product.new({
   'category_id' => 2
   })
 
+product_atomic1 = Product.new({
+  'name' => 'Atomic Downhill Ski Redster G7 Bindings X12',
+  'description' => 'Size 155cm Colour Gray/red, Black Deck, Red/Black Base Year 2019',
+  'stock_quantity' => 2,
+  'buying_cost' => 400,
+  'selling_price' => 650,
+  'manufacturer_id' => manufacturer_atomic.id,
+  'category_id' => 1
+  })
+
+product_atomic2 = Product.new({
+  'name' => 'Atomic Redster S9 + X12 TLR 18/19',
+  'description' => 'Size 160cm Colour Red, Black Deck, Red/Black Base Year 2018',
+  'stock_quantity' => 5,
+  'buying_cost' => 400,
+  'selling_price' => 650,
+  'manufacturer_id' => manufacturer_atomic.id,
+  'category_id' => 1
+  })
+
+product_rossignol1 = Product.new({
+  'name' => 'Rossignol Hero Fis Gs Pro + Spx B73 Race',
+  'description' => 'Size 170cm Colour Black/yellow, Black Deck, Yellow/Black Base Year 2019',
+  'stock_quantity' => 12,
+  'buying_cost' => 450,
+  'selling_price' => 550,
+  'manufacturer_id' => manufacturer_rossignol.id,
+  'category_id' => 1
+  })
+
+
 product_salomon1.save()
 product_salomon2.save()
 product_salomon3.save()
+product_atomic1.save()
+product_atomic2.save()
+product_rossignol1.save()
 
 # manufacturer_salomon.name = 'Nike'
 # manufacturer_salomon.update()

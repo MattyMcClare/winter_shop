@@ -1,6 +1,6 @@
 <h4>New Product</h4>
 
-<form action="/winter-shop" method="POST">
+<form action="/product" method="POST">
   <label for="name">Name:</label>
   <input id="name" name="name" type="text">
   <label for="description">Description:</label>
@@ -11,8 +11,13 @@
   <input id="buying-cost" name="buying_cost" type="number">
   <label for="selling-price">Selling Price:</label>
   <input id="selling-price" name="selling_price" type="number">
-  <label for="manufacturer-id">Manufacturer:</label>
-  <input id="manufacturer-id" name="manufacturer_id" type="text">
+
+  <select  id="manufacturer-id" name="manufacturer_id">
+      <% for manufacturer in @manufacturers %>
+        <option id="manufacturer-id" name="manufacturer_id" value="<%= manufacturer.id %>"><%= manufacturer.name %></option>
+      <% end %>
+    </select>
+
   <label for="category-id">Category:</label>
   <input id="category-id" name="category_id" type="text">
   <input value="Add Product" type="submit">

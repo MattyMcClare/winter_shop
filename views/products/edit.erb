@@ -1,0 +1,27 @@
+<h4>Edit Product</h4>
+
+<form action="/product/<%= @product.id %>" method="POST">
+  <label for="name">Name:</label>
+  <input id="name" name="name" type="text" value="<%= @product.name() %>">
+  <label for="description">Description:</label>
+  <input id="description" name="description" type="text" value="<%= @product.description() %>">
+  <label for="stock-quantity">Stock Qty:</label>
+  <input id="stock-quantity" name="stock_quantity" type="number" value="<%= @product.stock_quantity() %>">
+  <label for="buying-cost">Buying Cost:</label>
+  <input id="buying-cost" name="buying_cost" type="number" value="<%= @product.buying_cost() %>">
+  <label for="selling-price">Selling Price:</label>
+  <input id="selling-price" name="selling_price" type="number" value="<%= @product.selling_price() %>">
+  <select  id="manufacturer-id" name="manufacturer_id">
+    <% for manufacturer in @manufacturers %>
+        <% if @product.manufacturer_id == manufacturer.id %>
+          <option id="manufacturer-id" name="manufacturer_id" value="<%= manufacturer.id %>" selected><%= manufacturer.name %></option>
+        <% else %>
+          <option id="manufacturer-id" name="manufacturer_id" value="<%= manufacturer.id %>"><%= manufacturer.name %></option>
+        <% end %>
+    <% end %>
+  </select>
+  <label for="category-id">Category:</label>
+  <input id="category-id" name="category_id" type="text" value="<%= @product.category_id() %>">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <input value="Edit Product" type="submit">
+</form>
