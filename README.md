@@ -53,3 +53,7 @@ ver 0.1.1
 -added CRUD for category class
 -created index file for category
 -added index route for category
+
+ver 0.1.2
+-added create, update and delete routes for category
+-added filter by manufacturer

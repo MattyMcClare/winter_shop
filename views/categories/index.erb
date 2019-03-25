@@ -2,10 +2,11 @@
 
 <% for category in @categories %>
   <div>
-    <p><%= category.name %></p>
-    <a href="/category/<% category.id %>/edit">Edit</a>
-    <form action="/category/<% category.id %>/delete">
-      <input type="submit">
+    <p><%= category.name() %></p>
+    <a href="/category/<%= category.id %>/edit">Edit</a>
+    <form action="/category/<%= category.id %>/delete" method="POST">
+      <input id="hidden" type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete">
     </form>
   </div>
 <% end %>
