@@ -10,6 +10,7 @@
 <p>Selling price: <%= @product.selling_price() %></p>
 <p>Manufacturer: <%= @product.manufacturer().name() %></p>
 <p>Category: <%= @product.category().name %></p>
+<p>Markup: <%= @product.markup() %>%</p>
 
 <a href="/product/<%= @product.id() %>/edit">Edit Product</a>
 

@@ -11,7 +11,6 @@ get '/product' do #INDEX
   manufacturer_id = params[:manufacturer_id].to_i
   category_id = params[:category_id].to_i
   @products = Product.filter_products(manufacturer_id, category_id)
-  # @markup = Product.find
   @markup_all = Product.calculate_markup_all(manufacturer_id, category_id)
   @manufacturer_id = manufacturer_id.to_i
   @category_id = category_id.to_i

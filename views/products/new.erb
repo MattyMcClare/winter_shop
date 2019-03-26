@@ -6,11 +6,11 @@
   <label for="description">Description:</label>
   <input id="description" name="description" type="text">
   <label for="stock-quantity">Stock Qty:</label>
-  <input id="stock-quantity" name="stock_quantity" type="number">
+  <input id="stock-quantity" name="stock_quantity" type="number" min="0">
   <label for="buying-cost">Buying Cost:</label>
-  <input id="buying-cost" name="buying_cost" type="number">
+  <input id="buying-cost" name="buying_cost" type="number" min="0">
   <label for="selling-price">Selling Price:</label>
-  <input id="selling-price" name="selling_price" type="number">
+  <input id="selling-price" name="selling_price" type="number" min="0">
   <label for="manufacturer-id">Manufacturer:</label>
   <select  id="manufacturer-id" name="manufacturer_id">
     <% for manufacturer in @manufacturers %>

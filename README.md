@@ -68,3 +68,7 @@ ver 0.1.4
 
 ver 0.1.5
 -added calculating markup and markup_all
+
+ver 0.1.6
+-added min value for new and edit product
+-added markup into show product
