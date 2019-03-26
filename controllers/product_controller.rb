@@ -7,14 +7,18 @@ also_reload('../models/*')
 
 get '/product' do #INDEX
   @manufacturers = Manufacturer.all()
+  @categories = Category.all()
   manufacturer_id = params[:manufacturer_id]
-  @products = Product.all if manufacturer_id.nil? || manufacturer_id.empty?
-  @products = Product.find_by_manufacturer(manufacturer_id) unless manufacturer_id.nil? || manufacturer_id.empty?
+  category_id = params[:category_id]
+  @products = Product.filter_products(manufacturer_id, category_id)
+  # @products = Product.all if manufacturer_id.nil? || manufacturer_id.empty?
+  # @products = Product.find_by_manufacturer(manufacturer_id) unless manufacturer_id.nil? || manufacturer_id.empty?
   erb :'products/index'
 end
 
 get '/product/new' do #NEW
   @manufacturers = Manufacturer.all()
+  @categories = Category.all()
   erb :'products/new'
 end
 
@@ -32,6 +36,7 @@ end
 get '/product/:id/edit' do #EDIT
   @product = Product.find(params[:id])
   @manufacturers = Manufacturer.all()
+  @categories = Category.all()
   erb :'products/edit'
 end
 

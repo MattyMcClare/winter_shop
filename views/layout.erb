@@ -3,22 +3,27 @@
   <head>
     <meta charset="utf-8">
     <title>Winter Shop Inventory</title>
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="/style.css" type="text/css">
   </head>
   <body>
-    <header>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/product">Products List</a></li>
-        <li><a href="/manufacturer">Manufacturers List</a></li>
-        <li><a href="/category">Categories List</a></li>
-        <li><a href="/product/new">Add Product</a></li>
-        <li><a href="/manufacturer/new">Add Manufacturer</a></li>
-        <li><a href="/category/new">Add Category</a></li>
-      </ul>
+    <header class="header">
+      <nav class="nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/product">Products List</a></li>
+          <li><a href="/manufacturer">Manufacturers List</a></li>
+          <li><a href="/category">Categories List</a></li>
+          <li><a href="/product/new">Add Product</a></li>
+          <li><a href="/manufacturer/new">Add Manufacturer</a></li>
+          <li><a href="/category/new">Add Category</a></li>
+        </ul>
+      </nav>
     </header>
-    <div>
+    <div class="container">
       <%= yield %>
     </div>
+    <footer>
+      <p>Contact</p>
+    </footer>
   </body>
 </html>

@@ -16,6 +16,37 @@ class Product
     @category_id = options['category_id'].to_i
   end
 
+  def self.filter_products(manufacturer_id, category_id)
+    if (manufacturer_id.nil? || manufacturer_id.empty?) &&
+      (category_id.nil? || category_id.empty?)
+      return all()
+    elsif (manufacturer_id.nil? || manufacturer_id.empty?)
+      find_by_category(category_id)
+    elsif (category_id.nil? || category_id.empty?)
+      find_by_manufacturer(manufacturer_id)
+    else
+      find_by_man_cat(manufacturer_id, category_id)
+    end
+  end
+
+  def self.find_by_man_cat(manufacturer_id, category_id)
+    sql = 'SELECT * FROM products
+    WHERE manufacturer_id = $1 AND category_id = $2'
+    values = [manufacturer_id, category_id]
+    all_by_man_cat = SqlRunner.run(sql, values)
+    result = map_products(all_by_man_cat)
+    return result
+  end
+
+  def self.find_by_category(category_id)
+    sql = 'SELECT * FROM products
+    WHERE category_id = $1'
+    values = [category_id]
+    all_by_category = SqlRunner.run(sql, values)
+    result = map_products(all_by_category)
+    return result
+  end
+
   # def self.out_of_stock
   #   sql = 'SELECT * FROM products
   #   WHERE stock_quantity = 0'

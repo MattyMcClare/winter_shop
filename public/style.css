@@ -1,3 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.nav ul {
+  list-style: none;
+}
+
+.nav li {
+
+}
+
+.nav a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  display: inline-block;
+  padding: 0px 5px;
+}
+
+.nav a:hover {
+  color: gray;
+}
+
 .red {
   background-color: red;
 }

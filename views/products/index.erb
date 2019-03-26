@@ -1,11 +1,19 @@
 <p>Products Page</p>
-
-<form action="/product" method="GET">
-
+<label for="filter_form">Filter By:</label>
+<form id ="filter_form" action="/product" method="GET">
+  <label for="manufacturer-id">Manufacturer:</label>
   <select  id="manufacturer-id" name="manufacturer_id">
     <option value="">All</option>
     <% for manufacturer in @manufacturers %>
       <option id="manufacturer-id" name="manufacturer_id" value="<%= manufacturer.id %>"><%= manufacturer.name %></option>
+    <% end %>
+  </select>
+
+  <label for="category-id">Category:</label>
+  <select  id="category-id" name="category_id">
+    <option value="">All</option>
+    <% for category in @categories %>
+      <option id="category-id" name="category_id" value="<%= category.id %>"><%= category.name %></option>
     <% end %>
   </select>
   <input type="submit">

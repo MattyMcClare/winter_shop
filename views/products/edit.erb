@@ -11,6 +11,7 @@
   <input id="buying-cost" name="buying_cost" type="number" value="<%= @product.buying_cost() %>">
   <label for="selling-price">Selling Price:</label>
   <input id="selling-price" name="selling_price" type="number" value="<%= @product.selling_price() %>">
+  <label for="manufacturer-id">Manufacturer:</label>
   <select  id="manufacturer-id" name="manufacturer_id">
     <% for manufacturer in @manufacturers %>
         <% if @product.manufacturer_id == manufacturer.id %>
@@ -19,9 +20,18 @@
           <option id="manufacturer-id" name="manufacturer_id" value="<%= manufacturer.id %>"><%= manufacturer.name %></option>
         <% end %>
     <% end %>
+
   </select>
   <label for="category-id">Category:</label>
-  <input id="category-id" name="category_id" type="text" value="<%= @product.category_id() %>">
+  <select  id="category-id" name="category_id">
+  <% for category in @categories %>
+      <% if @product.category_id == category.id %>
+        <option id="category-id" name="category_id" value="<%= category.id %>" selected><%= category.name %></option>
+      <% else %>
+        <option id="category-id" name="category_id" value="<%= category.id %>"><%= category.name %></option>
+      <% end %>
+  <% end %>
+  </select>
   <input id="hidden" type="hidden" name="_method" value="patch">
   <input value="Edit Product" type="submit">
 </form>

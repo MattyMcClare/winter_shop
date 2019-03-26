@@ -11,14 +11,17 @@
   <input id="buying-cost" name="buying_cost" type="number">
   <label for="selling-price">Selling Price:</label>
   <input id="selling-price" name="selling_price" type="number">
-
+  <label for="manufacturer-id">Manufacturer:</label>
   <select  id="manufacturer-id" name="manufacturer_id">
     <% for manufacturer in @manufacturers %>
       <option id="manufacturer-id" name="manufacturer_id" value="<%= manufacturer.id %>"><%= manufacturer.name %></option>
     <% end %>
   </select>
 
-  <label for="category-id">Category:</label>
-  <input id="category-id" name="category_id" type="text">
+  <select  id="category-id" name="category_id">
+    <% for category in @categories %>
+      <option id="category-id" name="category_id" value="<%= category.id %>"><%= category.name %></option>
+    <% end %>
+  </select>
   <input value="Add Product" type="submit">
 </form>

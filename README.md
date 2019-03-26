@@ -57,3 +57,7 @@ ver 0.1.1
 ver 0.1.2
 -added create, update and delete routes for category
 -added filter by manufacturer
+
+ver 0.1.3
+-added filter by category
+-added dropdown for category in prduct edit
