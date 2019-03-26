@@ -1,11 +1,13 @@
 <p>Products Page</p>
 <label for="filter_form">Filter By:</label>
 <form id ="filter_form" action="/product" method="GET">
+
   <label for="manufacturer-id">Manufacturer:</label>
   <select  id="manufacturer-id" name="manufacturer_id">
     <option value="">All</option>
     <% for manufacturer in @manufacturers %>
-      <option id="manufacturer-id" name="manufacturer_id" value="<%= manufacturer.id %>"><%= manufacturer.name %></option>
+        <% selected_manufacturer = ( manufacturer.id == @manufacturer_id ) ? "selected" : "" %>
+        <option id="manufacturer-id" name="manufacturer_id" value="<%= manufacturer.id %>" <%= selected_manufacturer %> ><%= manufacturer.name %></option>
     <% end %>
   </select>
 
@@ -13,7 +15,8 @@
   <select  id="category-id" name="category_id">
     <option value="">All</option>
     <% for category in @categories %>
-      <option id="category-id" name="category_id" value="<%= category.id %>"><%= category.name %></option>
+        <% selected_category = ( category.id == @category_id ) ? "selected" : "" %>
+        <option id="category-id" name="category_id" value="<%= category.id %>" <%= selected_category %> ><%= category.name %></option>
     <% end %>
   </select>
   <input type="submit">

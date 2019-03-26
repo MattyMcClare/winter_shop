@@ -11,8 +11,8 @@ get '/product' do #INDEX
   manufacturer_id = params[:manufacturer_id]
   category_id = params[:category_id]
   @products = Product.filter_products(manufacturer_id, category_id)
-  # @products = Product.all if manufacturer_id.nil? || manufacturer_id.empty?
-  # @products = Product.find_by_manufacturer(manufacturer_id) unless manufacturer_id.nil? || manufacturer_id.empty?
+  @manufacturer_id = manufacturer_id.to_i
+  @category_id = category_id.to_i
   erb :'products/index'
 end
 

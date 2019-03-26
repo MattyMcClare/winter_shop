@@ -61,3 +61,7 @@ ver 0.1.2
 ver 0.1.3
 -added filter by category
 -added dropdown for category in prduct edit
+
+ver 0.1.4
+-refactored filter by manufacturer and category
+-added selected feature for filter by manufacturer and category
