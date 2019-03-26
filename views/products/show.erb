@@ -1,7 +1,7 @@
 <h4><%= @product.name() %></h4>
 
 <form action="#">
-  
+
 </form>
 
 <p>Description: <%= @product.description() %></p>
@@ -9,7 +9,7 @@
 <p>Buying cost: <%= @product.buying_cost() %></p>
 <p>Selling price: <%= @product.selling_price() %></p>
 <p>Manufacturer: <%= @product.manufacturer().name() %></p>
-<p>Category: <%= @product.category_id %></p>
+<p>Category: <%= @product.category().name %></p>
 
 <a href="/product/<%= @product.id() %>/edit">Edit Product</a>
 

@@ -12,24 +12,19 @@
   <label for="selling-price">Selling Price:</label>
   <input id="selling-price" name="selling_price" type="number" value="<%= @product.selling_price() %>">
   <label for="manufacturer-id">Manufacturer:</label>
-  <select  id="manufacturer-id" name="manufacturer_id">
+  <select id="manufacturer-id" name="manufacturer_id">
     <% for manufacturer in @manufacturers %>
-        <% if @product.manufacturer_id == manufacturer.id %>
-          <option id="manufacturer-id" name="manufacturer_id" value="<%= manufacturer.id %>" selected><%= manufacturer.name %></option>
-        <% else %>
-          <option id="manufacturer-id" name="manufacturer_id" value="<%= manufacturer.id %>"><%= manufacturer.name %></option>
-        <% end %>
+        <% selected_manufacturer = ( manufacturer.id == @product.manufacturer_id ) ? "selected" : "" %>
+        <option id="manufacturer-id" name="manufacturer_id" value="<%= manufacturer.id %>" <%= selected_manufacturer %> ><%= manufacturer.name %></option>
     <% end %>
   </select>
   <label for="category-id">Category:</label>
-  <select  id="category-id" name="category_id">
-  <% for category in @categories %>
-      <% if @product.category_id == category.id %>
-        <option id="category-id" name="category_id" value="<%= category.id %>" selected><%= category.name %></option>
-      <% else %>
-        <option id="category-id" name="category_id" value="<%= category.id %>"><%= category.name %></option>
-      <% end %>
-  <% end %>
+  <select id="category-id" name="category_id">
+    <% for category in @categories %>
+        <% selected_category = ( category.id == @product.category_id ) ? "selected" : "" %>
+        <%= p category.name%>
+        <option id="category-id" name="category_id" value="<%= category.id %>" <%= selected_category %> ><%= category.name %></option>
+    <% end %>
   </select>
   <input id="hidden" type="hidden" name="_method" value="patch">
   <input value="Edit Product" type="submit">

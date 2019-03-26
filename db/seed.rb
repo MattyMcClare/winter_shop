@@ -112,6 +112,7 @@ product_atomic1.save()
 product_atomic2.save()
 product_rossignol1.save()
 
+# p Product.calculate_markup
 
 # category_skis.name = 'Nike'
 # category_skis.update()

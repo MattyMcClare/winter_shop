@@ -13,8 +13,7 @@ get '/category/new' do #NEW
 end
 
 post '/category' do #CREATE
-  category = Category.new(params)
-  category.save()
+  Category.new(params).save()
   redirect('/category')
 end
 
@@ -24,14 +23,11 @@ get '/category/:id/edit' do #EDIT
 end
 
 patch '/category/:id' do #UPDATE
-  @category = Category.find(params[:id])
-  @category = Category.new(params)
-  @category.update()
+  Category.new(params).update()
   redirect "/category"
 end
 
 delete '/category/:id/delete' do #DELETE
-  @categories = Category.find(params[:id])
-  @categories.delete()
+  Category.find(params[:id]).delete()
   redirect('/category')
 end

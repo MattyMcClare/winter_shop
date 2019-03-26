@@ -16,34 +16,38 @@ class Product
     @category_id = options['category_id'].to_i
   end
 
-  def self.filter_products(manufacturer_id, category_id)
-    if (manufacturer_id.nil? || manufacturer_id.empty?) &&
-      (category_id.nil? || category_id.empty?)
-      return all()
-    elsif (manufacturer_id.nil? || manufacturer_id.empty?)
-      find_by_category(category_id)
-    elsif (category_id.nil? || category_id.empty?)
-      find_by_manufacturer(manufacturer_id)
-    else
-      find_by_man_cat(manufacturer_id, category_id)
-    end
+  def markup
+    return 0 if @buying_cost <= 0
+    markup = (@selling_price.to_f - @buying_cost.to_f) / @buying_cost.to_f * 100
+    markup_round = markup.round(2)
+    return markup_round
   end
 
-  def self.find_by_man_cat(manufacturer_id, category_id)
+  def self.calculate_markup_all(manufacturer_id, category_id)
+    buying_sum = filter_products(manufacturer_id, category_id).reduce(0) do |sum, product|
+      sum += product.buying_cost
+    end
+    selling_sum = filter_products(manufacturer_id, category_id).reduce(0) do |sum, product|
+      sum += product.selling_price
+    end
+    return 0 if buying_sum <= 0
+    markup = (selling_sum.to_f - buying_sum.to_f) / buying_sum.to_f * 100
+    markup_round = markup.round(2)
+    return markup_round
+  end
+
+  def self.filter_products(manufacturer_id, category_id)
+    return find_by_category(category_id) if manufacturer_id.zero?
+    return find_by_manufacturer(manufacturer_id) if category_id.zero?
+    return find_by_manufacturer_category(manufacturer_id, category_id)
+  end
+
+  def self.find_by_manufacturer_category(manufacturer_id, category_id)
     sql = 'SELECT * FROM products
     WHERE manufacturer_id = $1 AND category_id = $2'
     values = [manufacturer_id, category_id]
     all_by_man_cat = SqlRunner.run(sql, values)
     result = map_products(all_by_man_cat)
-    return result
-  end
-
-  def self.find_by_category(category_id)
-    sql = 'SELECT * FROM products
-    WHERE category_id = $1'
-    values = [category_id]
-    all_by_category = SqlRunner.run(sql, values)
-    result = map_products(all_by_category)
     return result
   end
 
@@ -55,7 +59,20 @@ class Product
   #   return result
   # end
 
+  def self.find_by_category(category_id)
+    return all if category_id.zero?
+
+    sql = 'SELECT * FROM products
+    WHERE category_id = $1'
+    values = [category_id]
+    all_by_category = SqlRunner.run(sql, values)
+    result = map_products(all_by_category)
+    return result
+  end
+
   def self.find_by_manufacturer(manufacturer_id)
+    return all if manufacturer_id.zero?
+
     sql = 'SELECT * FROM products
     WHERE manufacturer_id = $1'
     values = [manufacturer_id]
@@ -70,6 +87,14 @@ class Product
     values = [@manufacturer_id]
     result = SqlRunner.run(sql, values).first
     return Manufacturer.new(result)
+  end
+
+  def category
+    sql = 'SELECT * FROM categories
+    WHERE id = $1'
+    values = [@category_id]
+    result = SqlRunner.run(sql, values).first
+    return Category.new(result)
   end
 
   def save()

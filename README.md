@@ -65,3 +65,6 @@ ver 0.1.3
 ver 0.1.4
 -refactored filter by manufacturer and category
 -added selected feature for filter by manufacturer and category
+
+ver 0.1.5
+-added calculating markup and markup_all
