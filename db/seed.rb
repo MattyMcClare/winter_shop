@@ -52,7 +52,8 @@ product_salomon1 = Product.new({
   'buying_cost' => 300,
   'selling_price' => 500,
   'manufacturer_id' => manufacturer_salomon.id,
-  'category_id' => category_snowboards.id
+  'category_id' => category_snowboards.id,
+  'min_stock_level' => 2
   })
 
 product_salomon2 = Product.new({
@@ -62,7 +63,8 @@ product_salomon2 = Product.new({
   'buying_cost' => 200,
   'selling_price' => 300,
   'manufacturer_id' => manufacturer_salomon.id,
-  'category_id' => category_snowboards.id
+  'category_id' => category_snowboards.id,
+  'min_stock_level' => 4
   })
 
 product_salomon3 = Product.new({
@@ -72,7 +74,8 @@ product_salomon3 = Product.new({
   'buying_cost' => 120,
   'selling_price' => 200,
   'manufacturer_id' => manufacturer_salomon.id,
-  'category_id' => category_helmets.id
+  'category_id' => category_helmets.id,
+  'min_stock_level' => 3
   })
 
 product_atomic1 = Product.new({
@@ -82,7 +85,8 @@ product_atomic1 = Product.new({
   'buying_cost' => 400,
   'selling_price' => 650,
   'manufacturer_id' => manufacturer_atomic.id,
-  'category_id' => category_skis.id
+  'category_id' => category_skis.id,
+  'min_stock_level' => 3
   })
 
 product_atomic2 = Product.new({
@@ -92,7 +96,8 @@ product_atomic2 = Product.new({
   'buying_cost' => 400,
   'selling_price' => 650,
   'manufacturer_id' => manufacturer_atomic.id,
-  'category_id' => category_skis.id
+  'category_id' => category_skis.id,
+  'min_stock_level' => 3
   })
 
 product_rossignol1 = Product.new({
@@ -102,7 +107,8 @@ product_rossignol1 = Product.new({
   'buying_cost' => 450,
   'selling_price' => 550,
   'manufacturer_id' => manufacturer_rossignol.id,
-  'category_id' => category_skis.id
+  'category_id' => category_skis.id,
+  'min_stock_level' => 7
   })
 
 product_salomon1.save()

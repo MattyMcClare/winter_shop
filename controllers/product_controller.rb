@@ -10,7 +10,12 @@ get '/product' do #INDEX
   @categories = Category.all()
   manufacturer_id = params[:manufacturer_id].to_i
   category_id = params[:category_id].to_i
-  @products = Product.filter_products(manufacturer_id, category_id)
+  sort = params[:sort]
+  @sort = sort
+  p "------"
+  p @sort
+  p "------"
+  @products = Product.filter_sort_products(manufacturer_id, category_id, sort)
   @markup_all = Product.calculate_markup_all(manufacturer_id, category_id)
   @manufacturer_id = manufacturer_id.to_i
   @category_id = category_id.to_i

@@ -22,5 +22,6 @@ CREATE TABLE products(
   buying_cost INT4,
   selling_price INT4,
   manufacturer_id INT4,
-  category_id INT4
+  category_id INT4,
+  min_stock_level INT4
 );

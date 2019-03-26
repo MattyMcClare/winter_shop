@@ -7,6 +7,8 @@
   <input id="description" name="description" type="text" value="<%= @product.description() %>">
   <label for="stock-quantity">Stock Qty:</label>
   <input id="stock-quantity" name="stock_quantity" type="number" min="0" value="<%= @product.stock_quantity() %>">
+  <label for="min-stock-level">Min. Stock Level:</label>
+  <input id="min-stock-level" name="min_stock_level" type="number" min="0" value="<%= @product.min_stock_level() %>">
   <label for="buying-cost">Buying Cost:</label>
   <input id="buying-cost" name="buying_cost" type="number" min="0" value="<%= @product.buying_cost() %>">
   <label for="selling-price">Selling Price:</label>

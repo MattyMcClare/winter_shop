@@ -1,7 +1,9 @@
 <p>Products Page</p>
 <label for="filter_form">Filter By:</label>
 <form id ="filter_form" action="/product" method="GET">
-
+  <label for="out_of_stock">Out of Stock</label>
+  <% checked = ("checked" == @sort) ? "checked" : "no" %>
+  <input id="out_of_stock" type="checkbox" name="sort" value="checked" <%= checked %>>
   <label for="manufacturer-id">Manufacturer:</label>
   <select  id="manufacturer-id" name="manufacturer_id">
     <option value="">All</option>
@@ -20,6 +22,7 @@
     <% end %>
   </select>
   <input type="submit">
+  <a href="/product">Reset</a>
 </form>
 
 <% for product in @products %>
@@ -27,16 +30,19 @@
     <div class="red">
       <p><%=  product.name() %></p>
       <p>Stock Qty: <%=  product.stock_quantity() %></p>
+      <p>Min. Stock Level: <%=  product.min_stock_level %></p>
     </div>
-  <% elsif product.stock_quantity <= 2 %>
+  <% elsif product.stock_quantity <= product.min_stock_level %>
     <div class="yellow">
       <p><%=  product.name() %></p>
       <p>Stock Qty: <%=  product.stock_quantity() %></p>
+      <p>Min. Stock Level: <%=  product.min_stock_level %></p>
     </div>
   <% else %>
     <div>
       <p><%=  product.name() %></p>
       <p>Stock Qty: <%=  product.stock_quantity() %></p>
+      <p>Min. Stock Level: <%=  product.min_stock_level %></p>
     </div>
   <% end %>
   <a href="/product/<%= product.id %>">More Info</a>

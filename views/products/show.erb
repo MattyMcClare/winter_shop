@@ -1,11 +1,8 @@
 <h4><%= @product.name() %></h4>
 
-<form action="#">
-
-</form>
-
 <p>Description: <%= @product.description() %></p>
 <p>Stock Qty: <%= @product.stock_quantity() %></p>
+<p>Min. Stock Level: <%= @product.min_stock_level() %></p>
 <p>Buying cost: <%= @product.buying_cost() %></p>
 <p>Selling price: <%= @product.selling_price() %></p>
 <p>Manufacturer: <%= @product.manufacturer().name() %></p>

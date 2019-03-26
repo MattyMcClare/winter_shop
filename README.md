@@ -72,3 +72,6 @@ ver 0.1.5
 ver 0.1.6
 -added min value for new and edit product
 -added markup into show product
+
+ver 0.1.7
+-added sorting by stock level

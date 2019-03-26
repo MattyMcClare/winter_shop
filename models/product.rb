@@ -4,7 +4,7 @@ require_relative('./category')
 
 class Product
   attr_reader :id
-  attr_accessor :name, :description, :stock_quantity, :buying_cost, :selling_price, :manufacturer_id, :category_id
+  attr_accessor :name, :description, :stock_quantity, :buying_cost, :selling_price, :manufacturer_id, :category_id, :min_stock_level
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @name = options['name']
@@ -14,6 +14,7 @@ class Product
     @selling_price = options['selling_price'].to_i
     @manufacturer_id = options['manufacturer_id'].to_i
     @category_id = options['category_id'].to_i
+    @min_stock_level = options['min_stock_level'].to_i
   end
 
   def markup
@@ -34,6 +35,19 @@ class Product
     markup = (selling_sum.to_f - buying_sum.to_f) / buying_sum.to_f * 100
     markup_round = markup.round(2)
     return markup_round
+  end
+
+  def self.filter_sort_products(manufacturer_id, category_id, sort)
+      if sort == "checked"
+        products_arr = filter_products(manufacturer_id, category_id)
+        return sort(products_arr)
+      else
+        filter_products(manufacturer_id, category_id)
+      end
+  end
+
+  def self.sort(arr)
+    result = arr.sort_by{ |product| product.stock_quantity }
   end
 
   def self.filter_products(manufacturer_id, category_id)
@@ -105,9 +119,10 @@ class Product
     buying_cost,
     selling_price,
     manufacturer_id,
-    category_id)
+    category_id,
+    min_stock_level)
     VALUES
-    ($1, $2, $3, $4, $5, $6, $7)
+    ($1, $2, $3, $4, $5, $6, $7, $8)
     RETURNING id'
     values = [
       @name,
@@ -116,7 +131,8 @@ class Product
       @buying_cost,
       @selling_price,
       @manufacturer_id,
-      @category_id]
+      @category_id,
+      @min_stock_level]
     id = SqlRunner.run(sql, values).first['id']
     @id = id
   end
@@ -149,10 +165,11 @@ class Product
     buying_cost,
     selling_price,
     manufacturer_id,
-    category_id
+    category_id,
+    min_stock_level
     ) =
-    ($1, $2, $3, $4, $5, $6, $7)
-    WHERE id = $8'
+    ($1, $2, $3, $4, $5, $6, $7, $8)
+    WHERE id = $9'
     values = [
       @name,
       @description,
@@ -161,6 +178,7 @@ class Product
       @selling_price,
       @manufacturer_id,
       @category_id,
+      @min_stock_level,
       @id]
       SqlRunner.run(sql, values)
   end
