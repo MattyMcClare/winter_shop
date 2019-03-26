@@ -1,10 +1,10 @@
 <p>Products Page</p>
-<label for="filter_form">Filter By:</label>
+
 <form id ="filter_form" action="/product" method="GET">
-  <label for="out_of_stock">Out of Stock</label>
-  <% checked = ("checked" == @sort) ? "checked" : "no" %>
+  <label for="out_of_stock">Sort By Stock Quantity</label>
+  <% checked = ("checked" == @sort) ? "checked" : "" %>
   <input id="out_of_stock" type="checkbox" name="sort" value="checked" <%= checked %>>
-  <label for="manufacturer-id">Manufacturer:</label>
+  <label for="manufacturer-id">Filter By Manufacturer:</label>
   <select  id="manufacturer-id" name="manufacturer_id">
     <option value="">All</option>
       <% for manufacturer in @manufacturers %>
@@ -13,7 +13,7 @@
       <% end %>
   </select>
 
-  <label for="category-id">Category:</label>
+  <label for="category-id">Filter By Category:</label>
   <select  id="category-id" name="category_id">
     <option value="">All</option>
     <% for category in @categories %>
@@ -45,9 +45,11 @@
       <p>Min. Stock Level: <%=  product.min_stock_level %></p>
     </div>
   <% end %>
-  <a href="/product/<%= product.id %>">More Info</a>
   <p>Markup: <%= product.markup %>% </p>
+  <p>Income: £<%= product.income %> </p>
+  <a href="/product/<%= product.id %>">More Info</a>
   <p>--------------------------------------</p>
 <% end %>
 
-<p>Markup: <%= @markup_all %>% </p>
+<p>Total Markup: <%= @markup_all %>% </p>
+<p>Total Income: £<%= @total_income %> </p>

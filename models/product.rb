@@ -17,19 +17,37 @@ class Product
     @min_stock_level = options['min_stock_level'].to_i
   end
 
+  def income
+    income = (@selling_price * @stock_quantity) - (@buying_cost * @stock_quantity)
+    return income
+  end
+
+  def self.calculate_total_income(manufacturer_id, category_id)
+    buying_sum = filter_products(manufacturer_id, category_id).reduce(0) do |sum, product|
+      sum += (product.buying_cost * product.stock_quantity)
+    end
+    selling_sum = filter_products(manufacturer_id, category_id).reduce(0) do |sum, product|
+      sum += (product.selling_price * product.stock_quantity)
+    end
+    total_income = selling_sum - buying_sum
+    return total_income
+  end
+
   def markup
-    return 0 if @buying_cost <= 0
-    markup = (@selling_price.to_f - @buying_cost.to_f) / @buying_cost.to_f * 100
+    selling_price = @selling_price * @stock_quantity
+    buying_cost = @buying_cost * @stock_quantity
+    return 0 if buying_cost <= 0
+    markup = (selling_price.to_f - buying_cost.to_f) / buying_cost.to_f * 100
     markup_round = markup.round(2)
     return markup_round
   end
 
   def self.calculate_markup_all(manufacturer_id, category_id)
     buying_sum = filter_products(manufacturer_id, category_id).reduce(0) do |sum, product|
-      sum += product.buying_cost
+      sum += (product.buying_cost * product.stock_quantity)
     end
     selling_sum = filter_products(manufacturer_id, category_id).reduce(0) do |sum, product|
-      sum += product.selling_price
+      sum += (product.selling_price * product.stock_quantity)
     end
     return 0 if buying_sum <= 0
     markup = (selling_sum.to_f - buying_sum.to_f) / buying_sum.to_f * 100
@@ -38,16 +56,20 @@ class Product
   end
 
   def self.filter_sort_products(manufacturer_id, category_id, sort)
-      if sort == "checked"
-        products_arr = filter_products(manufacturer_id, category_id)
-        return sort(products_arr)
-      else
-        filter_products(manufacturer_id, category_id)
-      end
+    products_arr = filter_products(manufacturer_id, category_id)
+    if sort == "checked"
+      return sort_low_first(products_arr)
+    else
+      return sort_high_first(products_arr)
+    end
   end
 
-  def self.sort(arr)
-    result = arr.sort_by{ |product| product.stock_quantity }
+  def self.sort_high_first(arr)
+    return arr.sort_by{ |product| -product.stock_quantity }
+  end
+
+  def self.sort_low_first(arr)
+    return arr.sort_by{ |product| product.stock_quantity }
   end
 
   def self.filter_products(manufacturer_id, category_id)

@@ -75,3 +75,7 @@ ver 0.1.6
 
 ver 0.1.7
 -added sorting by stock level
+
+ver 0.2.0
+-added total income
+-added income per product

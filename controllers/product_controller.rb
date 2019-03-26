@@ -12,11 +12,9 @@ get '/product' do #INDEX
   category_id = params[:category_id].to_i
   sort = params[:sort]
   @sort = sort
-  p "------"
-  p @sort
-  p "------"
   @products = Product.filter_sort_products(manufacturer_id, category_id, sort)
   @markup_all = Product.calculate_markup_all(manufacturer_id, category_id)
+  @total_income = Product.calculate_total_income(manufacturer_id, category_id)
   @manufacturer_id = manufacturer_id.to_i
   @category_id = category_id.to_i
   erb :'products/index'
