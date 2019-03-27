@@ -7,21 +7,25 @@
   </head>
   <body>
     <header class="header">
-      <nav class="nav">
+      <nav class="nav" role="navigation">
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/product">Products List</a></li>
-          <li><a href="/manufacturer">Manufacturers List</a></li>
-          <li><a href="/category">Categories List</a></li>
-          <li><a href="/product/new">Add Product</a></li>
-          <li><a href="/manufacturer/new">Add Manufacturer</a></li>
-          <li><a href="/category/new">Add Category</a></li>
+          <a href="/"><li>Home</li></a>
+          <a href="/product"><li>Products List</li></a>
+          <a href="/manufacturer"><li>Manufacturers List</li></a>
+          <a href="/category"><li>Categories List</li></a>
+          <li class="new"><a href="#">New</a>
+            <ul class="new">
+              <a href="/product/new"><li>Add Product</li></a>
+              <a href="/manufacturer/new"><li>Add Manufacturer</li></a>
+              <a href="/category/new"><li>Add Category</li></a>
+            </ul>
+          </li>
         </ul>
       </nav>
     </header>
-    <div class="container">
+    <main class="main">
       <%= yield %>
-    </div>
+    </main>
     <footer>
       <p>Contact</p>
     </footer>

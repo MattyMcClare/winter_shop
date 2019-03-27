@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -5,31 +6,113 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
-.nav ul {
-  list-style: none;
+.main .l_page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem;
 }
 
-.nav li {
-
+.l_page h1 {
+  font-size: 4em;
+  padding: 100px;
 }
 
-.nav a {
+.l_page p {
+  font-size: 1.2em;
+}
+
+
+
+.header {
+height: 50px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+a {
   text-decoration: none;
   color: black;
-  display: flex;
-  display: inline-block;
-  padding: 0px 5px;
 }
 
-.nav a:hover {
+a:hover {
   color: gray;
 }
 
-.red {
-  background-color: red;
+.nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-.yellow {
-  background-color: yellow;
+.nav li {
+  background: #535353;
+  padding: 1rem;
+  position: relative;
+  text-decoration: none;
+  transition-duration: 0.3s;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.nav a {
+  flex-grow: 1;
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  content: 50px;
+}
+
+.nav ul li ul {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  /* transition: all 0.3s ease; */
+  margin-top: 1rem;
+  left: 0;
+  display: none;
+}
+
+.nav ul li:hover > ul,
+ul li:focus-within > ul,
+ul li:hover > ul,
+ul li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.nav ul li ul li {
+  clear: both;
+  width: 100%;
+}
+
+li:focus-within a {
+  outline: none;
+}
+
+.nav li:hover,
+li:focus-within {
+  background: #FF8800;
+  cursor: pointer;
+}
+
+.red {
+  background-color: rgba(255,0,0,0.4);
+}
+
+.orange {
+  background-color: rgba(255,153,0,0.5);;
+}
+
+.table {
+  text-align: center;
 }

@@ -1,4 +1,4 @@
-<p>Products Page</p>
+<h3>Products Page</h3>
 
 <form id ="filter_form" action="/product" method="GET">
   <label for="out_of_stock">Sort By Stock Quantity</label>
@@ -25,31 +25,57 @@
   <a href="/product">Reset</a>
 </form>
 
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Stock Qty</th>
+    <th>Min. Stock Level</th>
+    <th>Markup</th>
+    <th>Income</th>
+    <th></th>
+  </tr>
 <% for product in @products %>
   <% if product.stock_quantity == 0 %>
     <div class="red">
-      <p><%=  product.name() %></p>
-      <p>Stock Qty: <%=  product.stock_quantity() %></p>
-      <p>Min. Stock Level: <%=  product.min_stock_level %></p>
+      <tr>
+        <td><%= product.name() %></td>
+        <td><%= product.stock_quantity() %></td>
+        <td><%= product.min_stock_level %></td>
+        <td><%= product.markup %>%</td>
+        <td>£<%= product.income %></td>
+        <td><a href="/product/<%= product.id %>">More Info</a></td>
+      </tr>
     </div>
+
   <% elsif product.stock_quantity <= product.min_stock_level %>
-    <div class="yellow">
-      <p><%=  product.name() %></p>
-      <p>Stock Qty: <%=  product.stock_quantity() %></p>
-      <p>Min. Stock Level: <%=  product.min_stock_level %></p>
+    <div class="orange">
+      <tr>
+        <td><%= product.name() %></td>
+        <td><%= product.stock_quantity() %></td>
+        <td><%= product.min_stock_level %></td>
+        <td><%= product.markup %>%</td>
+        <td>£<%= product.income %></td>
+        <td><a href="/product/<%= product.id %>">More Info</a></td>
+      </tr>
     </div>
   <% else %>
     <div>
-      <p><%=  product.name() %></p>
-      <p>Stock Qty: <%=  product.stock_quantity() %></p>
-      <p>Min. Stock Level: <%=  product.min_stock_level %></p>
+      <tr>
+        <td><%= product.name() %></td>
+        <td><%= product.stock_quantity() %></td>
+        <td><%= product.min_stock_level %></td>
+        <td><%= product.markup %>%</td>
+        <td>£<%= product.income %></td>
+        <td><a href="/product/<%= product.id %>">More Info</a></td>
+      </tr>
     </div>
   <% end %>
-  <p>Markup: <%= product.markup %>% </p>
-  <p>Income: £<%= product.income %> </p>
-  <a href="/product/<%= product.id %>">More Info</a>
-  <p>--------------------------------------</p>
 <% end %>
-
-<p>Total Markup: <%= @markup_all %>% </p>
-<p>Total Income: £<%= @total_income %> </p>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Total Markup: <%= @markup_all %>% </td>
+    <td>Total Income: £<%= @total_income %> </td>
+  </tr>
+</table>

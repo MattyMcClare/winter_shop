@@ -79,3 +79,8 @@ ver 0.1.7
 ver 0.2.0
 -added total income
 -added income per product
+
+ver 0.2.1
+-refactored product show to table
+-added nav bar
+-styled home page
