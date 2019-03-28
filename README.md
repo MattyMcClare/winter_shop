@@ -84,3 +84,6 @@ ver 0.2.1
 -refactored product show to table
 -added nav bar
 -styled home page
+
+Ver 0.2.2
+-lots of css changes

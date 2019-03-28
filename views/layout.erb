@@ -13,7 +13,7 @@
           <a href="/product"><li>Products List</li></a>
           <a href="/manufacturer"><li>Manufacturers List</li></a>
           <a href="/category"><li>Categories List</li></a>
-          <li class="new"><a href="#">New</a>
+          <li class="new"><a href="#">Add</a>
             <ul class="new">
               <a href="/product/new"><li>Add Product</li></a>
               <a href="/manufacturer/new"><li>Add Manufacturer</li></a>
@@ -25,9 +25,10 @@
     </header>
     <main class="main">
       <%= yield %>
+      <div class="push"></div>
     </main>
-    <footer>
-      <p>Contact</p>
+    <footer class="footer">
+      <p>&copy Copyright <%= Time.new.year %> | Contact: matstanczak@gmail.com </p> <p><img src="data:image/png;base64,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"></p>
     </footer>
   </body>
 </html>

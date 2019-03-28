@@ -1,6 +1,9 @@
-<h3>Manufacturer Page</h3>
-<% for manufacturer in @manufacturers %>
-<p><%=  manufacturer.name() %></p>
-<a href="/manufacturer/<%= manufacturer.id %>">More Info</a>
-<p>--------------------------------------</p>
-<% end %>
+<div class="list">
+  <h3>Manufacturer List</h3>
+  <% for manufacturer in @manufacturers %>
+  <p><%=  manufacturer.name() %></p>
+  <div>
+   <a class="button" href="/manufacturer/<%= manufacturer.id %>">Show Details</a>
+  </div>
+  <% end %>
+</div>

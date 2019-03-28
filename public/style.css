@@ -2,8 +2,11 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+  box-sizing: border-box;
 }
 
 .main .l_page {
@@ -23,8 +26,6 @@
   font-size: 1.2em;
 }
 
-
-
 .header {
 height: 50px;
 }
@@ -32,16 +33,131 @@ height: 50px;
 .main {
   display: flex;
   flex-direction: column;
+  margin-bottom: 54px;
+}
+
+.main h3 {
+  display: flex;
+  justify-content: center;
   margin: 20px;
+  font-size: 2em;
+}
+
+#filter_form {
+  display: flex;
+  justify-content: center;
+  font-size: 1.2em;
+  margin-bottom: 25px;
+}
+
+#filter_form div {
+  margin-right: 20px;
+}
+
+#filter_form .checkbox {
+  outline-style: none;
+  display: flex;
+   flex-direction: row;
+   padding-left: 35px;
+   margin-bottom: 12px;
+   user-select: none;
+}
+
+.checkbox input {
+  position: relative;
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+.checkbox .custom_checkbox {
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  margin-left: 10px;
+  background-color: #eee;
+}
+
+.checkbox .up {
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  margin-left: 10px;
+  background-color: #eee;
+}
+
+.checkbox:hover input ~ .custom_checkbox {
+  background-color: #ccc;
+}
+
+.checkbox:hover input ~ .up {
+  background-color: #ccc;
+}
+
+.custom_checkbox:after {
+  content: "";
+  position: relative;
+  display: none;
+}
+
+.up:after {
+
+  left: 6px;
+  top: 9px;
+  width: 10px;
+  height: 10px;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  transform: rotate(225deg);
+}
+
+.checkbox input:checked ~ .custom_checkbox:after {
+  display: block;
+}
+
+.checkbox input:checked ~ .up:after {
+  display: none;
+}
+
+.checkbox .up::after {
+  content: "";
+  position: relative;
+  display: block;
+}
+
+.checkbox .custom_checkbox:after {
+  left: 6px;
+  top: 3px;
+  width: 10px;
+  height: 10px;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #535353;
+  color: white;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer p {
+  text-align: center;
+  padding: 5px;
 }
 
 a {
   text-decoration: none;
   color: black;
-}
-
-a:hover {
-  color: gray;
 }
 
 .nav ul {
@@ -50,6 +166,8 @@ a:hover {
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
+  /* position: fixed;
+  top: 1; */
 }
 
 .nav li {
@@ -57,7 +175,7 @@ a:hover {
   padding: 1rem;
   position: relative;
   text-decoration: none;
-  transition-duration: 0.3s;
+  /* transition-duration: 0.3s; */
   text-align: center;
   flex-grow: 1;
 }
@@ -74,7 +192,7 @@ a:hover {
   visibility: hidden;
   opacity: 0;
   position: absolute;
-  /* transition: all 0.3s ease; */
+  transition: all 0.3s ease;
   margin-top: 1rem;
   left: 0;
   display: none;
@@ -101,7 +219,7 @@ li:focus-within a {
 
 .nav li:hover,
 li:focus-within {
-  background: #FF8800;
+  background: rgba(78,110,147,1);
   cursor: pointer;
 }
 
@@ -110,9 +228,196 @@ li:focus-within {
 }
 
 .orange {
-  background-color: rgba(255,153,0,0.5);;
+  background-color: rgba(255,153,0,0.5);
 }
 
 .table {
+  table-layout: fixed;
+  width: 100%;
+  height: 10px;
+  border-collapse: collapse;
   text-align: center;
+  /* border: 2px inset rgba(198,198,198,0.5); */
+}
+
+.table td:nth-child(1) {
+  text-align: left;
+  padding-left: 10px;
+}
+
+.table tr {
+  height: 50px;
+}
+
+.table .empty:nth-child(odd) {
+  background: rgba(221,221,221,1);
+}
+
+.table .empty:nth-child(even) {
+  background: rgba(221,221,221,0.5);
+}
+
+.table .orange:nth-child(odd) {
+  background: rgba(255,153,0,0.6);
+}
+
+.table .red:nth-child(odd) {
+  background: rgba(255,0,0,0.5);
+}
+
+.totals td:nth-child(4), .totals td:nth-child(5){
+  background: rgba(78,110,147,0.5);
+}
+
+.table thead tr {
+  background: rgba(78,110,147,0.8);
+}
+
+.button {
+  outline-style: none;
+  padding: 3px 6px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  font-weight: lighter;
+  border-radius: 7px;
+  background: rgb(169,182,199);
+  color: black;
+  box-shadow: 1px 1px 5px 1px rgba(78,110,147,0.1);
+  border: none;
+}
+
+.button:hover {
+  background: rgb(179,192,209);
+  text-shadow: 0px 0px 15px white;
+}
+
+.show {
+  margin: 40px;
+}
+
+.show h4 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.show p {
+  margin-bottom: 3px;
+  font-size: 1.2em;
+}
+
+.show .button {
+  margin-top: 10px;
+}
+
+.show span {
+  margin-right: 40px;
+}
+
+.container > div {
+    display: flex;
+    justify-content:flex-start;
+}
+
+.show  .container {
+  display: grid;
+  grid-template-columns: 150px auto;
+  grid-template-rows: 20px 20px 20px 20px 20px 20px 20px 20px 20px;
+  grid-gap: 3px;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+
+.list {
+  margin: 40px;
+}
+
+.list p {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 1.5em;
+}
+
+.list .button {
+  margin: 5px 0;
+}
+
+.new_container {
+  display: flex;
+  justify-content: center;
+}
+
+.add > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3em;
+}
+
+input[type=text] {
+  padding: 5px;
+  outline-style: none;
+  font-size: 1em;
+  border-style: none;
+  border: 1px solid #DDD;
+  outline: none;
+  margin: 0;
+  width: 100%
+}
+
+input[type=number] {
+  padding: 5px;
+  outline-style: none;
+  font-size: 1em;
+  border-style: none;
+  border: 1px solid #DDD;
+  outline: none;
+  margin: 0;
+  width: 100%
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input:focus {
+  background: none;
+  border: 1px solid black;
+}
+
+.add {
+  display: grid;
+  grid-template-columns: 200px 200px;
+  grid-template-rows: repeat(9, 1fr);
+  grid-gap: 3px;
+}
+
+.button_grid {
+  grid-column: 1 / -1;
+}
+
+select {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -webkit-padding-end: 20px;
+    -moz-padding-end: 20px;
+    -webkit-padding-start: 2px;
+    -moz-padding-start: 2px;
+    background-color: white;
+    background-position: center right;
+    background-repeat: no-repeat;
+    border: 1px solid #DDD;
+    border-radius: 2px;
+    color: black;
+    margin: 0;
+    overflow: hidden;
+    padding: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    outline: none;
+    width: 100%;
+    font-size: 1em
 }

@@ -1,18 +1,21 @@
-<h4><%= @product.name() %></h4>
 
-<p>Description: <%= @product.description() %></p>
-<p>Stock Qty: <%= @product.stock_quantity() %></p>
-<p>Min. Stock Level: <%= @product.min_stock_level() %></p>
-<p>Buying cost: <%= @product.buying_cost() %></p>
-<p>Selling price: <%= @product.selling_price() %></p>
-<p>Manufacturer: <%= @product.manufacturer().name() %></p>
-<p>Category: <%= @product.category().name %></p>
-<p>Markup: <%= @product.markup() %>%</p>
-<p>Income: £<%= @product.income() %></p>
+<div class="show">
+  <h4><%= @product.name() %></h4>
+  <div class="container">
+    <div>Description:</div><div><%= @product.description() %></div>
+    <div>Stock Qty:</div><div><%= @product.stock_quantity() %></div>
+    <div>Min. Stock Level:</div><div><%= @product.min_stock_level() %></div>
+    <div>Buying cost:</div><div><%= @product.buying_cost() %></div>
+    <div>Selling price:</div><div><%= @product.selling_price() %></div>
+    <div>Manufacturer:</div><div><%= @product.manufacturer().name() %></div>
+    <div>Category:</div><div><%= @product.category().name %></div>
+    <div>Markup:</div><div><%= @product.markup() %>%</div>
+    <div>Income:</div><div>£<%= @product.income() %></div>
+  </div>
+  <a class="button" href="/product/<%= @product.id() %>/edit">Edit Product</a>
 
-<a href="/product/<%= @product.id() %>/edit">Edit Product</a>
-
-<form action="/product/<%= @product.id() %>/delete" method="POST">
-  <input id="hidden" name="_method" type="hidden" value="delete">
-  <input type="submit" value="Delete Product">
-</form>
+  <form action="/product/<%= @product.id() %>/delete" method="POST">
+    <input id="hidden" name="_method" type="hidden" value="delete">
+    <input class="button" type="submit" value="Delete Product">
+  </form>
+</div>

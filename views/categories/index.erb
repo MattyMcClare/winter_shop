@@ -1,12 +1,14 @@
-<h3>Category Page</h3>
+<div class="list">
+<h3>Category List</h3>
 
 <% for category in @categories %>
   <div>
     <p><%= category.name() %></p>
-    <a href="/category/<%= category.id %>/edit">Edit</a>
+    <a class="button" href="/category/<%= category.id %>/edit">Edit</a>
     <form action="/category/<%= category.id %>/delete" method="POST">
       <input id="hidden" type="hidden" name="_method" value="delete">
-      <input type="submit" value="Delete">
+      <input class="button" type="submit" value="Delete">
     </form>
   </div>
 <% end %>
+</div>

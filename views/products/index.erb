@@ -1,77 +1,82 @@
-<h3>Products Page</h3>
+<h3>Product List</h3>
 
 <form id ="filter_form" action="/product" method="GET">
-  <label for="out_of_stock">Sort By Stock Quantity</label>
-  <% checked = ("checked" == @sort) ? "checked" : "" %>
-  <input id="out_of_stock" type="checkbox" name="sort" value="checked" <%= checked %>>
-  <label for="manufacturer-id">Filter By Manufacturer:</label>
-  <select  id="manufacturer-id" name="manufacturer_id">
-    <option value="">All</option>
-      <% for manufacturer in @manufacturers %>
-        <% selected_manufacturer = ( manufacturer.id == @manufacturer_id ) ? "selected" : "" %>
-          <option id="manufacturer-id" name="manufacturer_id" value="<%= manufacturer.id %>" <%= selected_manufacturer %> ><%= manufacturer.name %></option>
+  <div>
+    <label class="checkbox" for="out_of_stock">Sort By Stock Quantity:
+    <% checked = ("checked" == @sort) ? "checked" : "" %>
+    <input id="out_of_stock" type="checkbox" name="sort" value="checked" <%= checked %>>
+    <span class="custom_checkbox"></span>
+    <span class="up"></span>
+    </label>
+  </div>
+  <div>
+    <label for="manufacturer-id">Filter By Manufacturer: </label>
+    <select  id="manufacturer-id" name="manufacturer_id">
+      <option value="">All</option>
+        <% for manufacturer in @manufacturers %>
+          <% selected_manufacturer = ( manufacturer.id == @manufacturer_id ) ? "selected" : "" %>
+            <option id="manufacturer-id" name="manufacturer_id" value="<%= manufacturer.id %>" <%= selected_manufacturer %> ><%= manufacturer.name %></option>
+        <% end %>
+    </select>
+  </div>
+  <div>
+    <label for="category-id">Filter By Category:</label>
+    <select  id="category-id" name="category_id">
+      <option value="">All</option>
+      <% for category in @categories %>
+          <% selected_category = ( category.id == @category_id ) ? "selected" : "" %>
+          <option id="category-id" name="category_id" value="<%= category.id %>" <%= selected_category %> ><%= category.name %></option>
       <% end %>
-  </select>
-
-  <label for="category-id">Filter By Category:</label>
-  <select  id="category-id" name="category_id">
-    <option value="">All</option>
-    <% for category in @categories %>
-        <% selected_category = ( category.id == @category_id ) ? "selected" : "" %>
-        <option id="category-id" name="category_id" value="<%= category.id %>" <%= selected_category %> ><%= category.name %></option>
-    <% end %>
-  </select>
-  <input type="submit">
-  <a href="/product">Reset</a>
+    </select>
+  </div>
+  <div >
+    <input class="button" type="submit">
+    <a class="button" href="/product">Reset</a>
+  </div>
 </form>
 
 <table class="table">
-  <tr>
-    <th>Name</th>
-    <th>Stock Qty</th>
-    <th>Min. Stock Level</th>
-    <th>Markup</th>
-    <th>Income</th>
-    <th></th>
-  </tr>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Stock Qty</th>
+      <th>Min. Stock Level</th>
+      <th>Markup</th>
+      <th>Income</th>
+      <th></th>
+    </tr>
+  </thead>
 <% for product in @products %>
   <% if product.stock_quantity == 0 %>
-    <div class="red">
-      <tr>
+      <tr class="red">
         <td><%= product.name() %></td>
         <td><%= product.stock_quantity() %></td>
         <td><%= product.min_stock_level %></td>
         <td><%= product.markup %>%</td>
         <td>£<%= product.income %></td>
-        <td><a href="/product/<%= product.id %>">More Info</a></td>
+        <td><a class="button" href="/product/<%= product.id %>">Show Details</a></td>
       </tr>
-    </div>
-
   <% elsif product.stock_quantity <= product.min_stock_level %>
-    <div class="orange">
-      <tr>
+      <tr class="orange">
         <td><%= product.name() %></td>
         <td><%= product.stock_quantity() %></td>
         <td><%= product.min_stock_level %></td>
         <td><%= product.markup %>%</td>
         <td>£<%= product.income %></td>
-        <td><a href="/product/<%= product.id %>">More Info</a></td>
+        <td><a class="button" href="/product/<%= product.id %>">Show Details</a></td>
       </tr>
-    </div>
   <% else %>
-    <div>
-      <tr>
+      <tr class="empty">
         <td><%= product.name() %></td>
         <td><%= product.stock_quantity() %></td>
         <td><%= product.min_stock_level %></td>
         <td><%= product.markup %>%</td>
         <td>£<%= product.income %></td>
-        <td><a href="/product/<%= product.id %>">More Info</a></td>
+        <td><a class="button" href="/product/<%= product.id %>">Show Details</a></td>
       </tr>
-    </div>
   <% end %>
 <% end %>
-  <tr>
+  <tr class="totals">
     <td></td>
     <td></td>
     <td></td>
