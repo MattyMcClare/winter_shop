@@ -1,8 +1,11 @@
-<h4>Edit Category</h4>
-
-<form action="/category/<%= @category.id() %>" method="POST">
-  <label for="name">Name:</label>
-  <input id="name" name="name" type="text" value="<%= @category.name() %>">
-  <input id="hidden" type="hidden" name="_method" value="patch">
-  <input type="submit" value="Update">
-</form>
+<h3>Edit Category</h3>
+<div class="new_container">
+  <form action="/category/<%= @category.id() %>" method="POST">
+    <div class="add">
+      <div><label for="name">Name:</label></div>
+      <div><input id="name" name="name" type="text" value="<%= @category.name() %>"></div>
+      <input id="hidden" type="hidden" name="_method" value="patch">
+      <div class="button_grid"><input class="button" type="submit" value="Update"></div>
+    </div>
+  </form>
+</div>

@@ -1,12 +1,15 @@
-<h4>Edit Manufacturer</h4>
-
-<form action="/manufacturer/<%= @manufacturer.id %>" method="POST">
-  <label for="name">Name:</label>
-  <input id="name" name="name" type="text" value="<%= @manufacturer.name() %>">
-  <label for="contact">Contact:</label>
-  <input id="contact" name=contact type="text" value="<%= @manufacturer.contact() %>">
-  <label for="address">Address:</label>
-  <input id="address" name="address" type="text" value="<%= @manufacturer.address() %>">
-  <input id="hidden" type="hidden" name="_method" value="patch">
-  <input class="button" value="Update Manufacturer" type="submit">
-</form>
+<h3>Edit Manufacturer</h3>
+<div class="new_container">
+  <form action="/manufacturer/<%= @manufacturer.id %>" method="POST">
+    <div class="add">
+      <div><label for="name">Name:</label></div>
+      <div><input id="name" name="name" type="text" value="<%= @manufacturer.name() %>"></div>
+      <div><label for="contact">Contact:</label></div>
+      <div><input id="contact" name=contact type="text" value="<%= @manufacturer.contact() %>"></div>
+      <div><label for="address">Address:</label></div>
+      <div><input id="address" name="address" type="text" value="<%= @manufacturer.address() %>"></div>
+      <input id="hidden" type="hidden" name="_method" value="patch">
+      <div class="button_grid"><input class="button" value="Update" type="submit"></div>
+    </div>
+  </form>
+</div>

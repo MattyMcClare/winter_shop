@@ -1,9 +1,11 @@
+<h3>Manufacturer List</h3>
 <div class="list">
-  <h3>Manufacturer List</h3>
-  <% for manufacturer in @manufacturers %>
-  <p><%=  manufacturer.name() %></p>
-  <div>
-   <a class="button" href="/manufacturer/<%= manufacturer.id %>">Show Details</a>
+  <div class="index">
+    <div><% for manufacturer in @manufacturers %>
+    <p><%=  manufacturer.name() %></p>
+    <div>
+     <a class="button" href="/manufacturer/<%= manufacturer.id %>">Show Details</a>
+    </div>
+    <% end %></div>
   </div>
-  <% end %>
 </div>

@@ -1,13 +1,13 @@
-<div class="show">
-<h4><%= @manufacturer.name() %></h4>
 
-<p>Contact: <%= @manufacturer.contact() %></p>
-<p>Address: <%= @manufacturer.address() %></p>
-<div >
-  <a class="button" href="/manufacturer/<%= @manufacturer.id() %>/edit">Edit Product</a>
-</div>
-<form action="/manufacturer/<%= @manufacturer.id() %>/delete" method="POST">
-  <input id="hidden" name="_method" type="hidden" value="delete">
-  <input class="button" type="submit" value="Delete Product">
-</form>
+<h3><%= @manufacturer.name() %></h3>
+<div class="list">
+  <div class="index">
+    <div><p>Contact: <%= @manufacturer.contact() %></p></div>
+    <div><p>Address: <%= @manufacturer.address() %></p></div>
+    <div class="button_grid" ><a class="button" href="/manufacturer/<%= @manufacturer.id() %>/edit">Edit</a></div>
+    <form action="/manufacturer/<%= @manufacturer.id() %>/delete" method="POST">
+      <input id="hidden" name="_method" type="hidden" value="delete">
+      <div class="button_grid"><input class="button_delete" type="submit" value="Delete"></div>
+    </form>
+  </div>
 </div>

@@ -1,6 +1,6 @@
 
+<h3><%= @product.name() %></h3>
 <div class="show">
-  <h4><%= @product.name() %></h4>
   <div class="container">
     <div>Description:</div><div><%= @product.description() %></div>
     <div>Stock Qty:</div><div><%= @product.stock_quantity() %></div>
@@ -11,11 +11,11 @@
     <div>Category:</div><div><%= @product.category().name %></div>
     <div>Markup:</div><div><%= @product.markup() %>%</div>
     <div>Income:</div><div>£<%= @product.income() %></div>
-  </div>
-  <a class="button" href="/product/<%= @product.id() %>/edit">Edit Product</a>
+    <div class="button_grid"><a class="button" href="/product/<%= @product.id() %>/edit">Edit</a></div>
 
-  <form action="/product/<%= @product.id() %>/delete" method="POST">
+  <div class="button_grid"><form action="/product/<%= @product.id() %>/delete" method="POST">
     <input id="hidden" name="_method" type="hidden" value="delete">
-    <input class="button" type="submit" value="Delete Product">
-  </form>
+    <input class="button_delete" type="submit" value="Delete">
+  </form></div>
+  </div>
 </div>

@@ -1,14 +1,14 @@
-<div class="list">
 <h3>Category List</h3>
-
-<% for category in @categories %>
-  <div>
-    <p><%= category.name() %></p>
-    <a class="button" href="/category/<%= category.id %>/edit">Edit</a>
-    <form action="/category/<%= category.id %>/delete" method="POST">
-      <input id="hidden" type="hidden" name="_method" value="delete">
-      <input class="button" type="submit" value="Delete">
-    </form>
+<div class="list">
+  <div class="index2">
+    <% for category in @categories %>
+        <div><p><%= category.name() %></p></div>
+        <div><a class="button" href="/category/<%= category.id %>/edit">Edit</a>
+        <form action="/category/<%= category.id %>/delete" method="POST">
+          <input id="hidden" type="hidden" name="_method" value="delete">
+          <input class="button_delete" type="submit" value="Delete">
+        </form></div>
+    <% end %>
   </div>
-<% end %>
 </div>
+ 

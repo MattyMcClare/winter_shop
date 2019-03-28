@@ -85,5 +85,9 @@ ver 0.2.1
 -added nav bar
 -styled home page
 
-Ver 0.2.2
+ver 0.2.2
 -lots of css changes
+
+ver 1.0.0
+-refactored css
+-changed names of buttons

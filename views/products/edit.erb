@@ -1,33 +1,36 @@
-<h4>Edit Product</h4>
-
-<form action="/product/<%= @product.id %>" method="POST">
-  <label for="name">Name:</label>
-  <input id="name" name="name" type="text" value="<%= @product.name() %>">
-  <label for="description">Description:</label>
-  <input id="description" name="description" type="text" value="<%= @product.description() %>">
-  <label for="stock-quantity">Stock Qty:</label>
-  <input id="stock-quantity" name="stock_quantity" type="number" min="0" value="<%= @product.stock_quantity() %>">
-  <label for="min-stock-level">Min. Stock Level:</label>
-  <input id="min-stock-level" name="min_stock_level" type="number" min="0" value="<%= @product.min_stock_level() %>">
-  <label for="buying-cost">Buying Cost:</label>
-  <input id="buying-cost" name="buying_cost" type="number" min="0" value="<%= @product.buying_cost() %>">
-  <label for="selling-price">Selling Price:</label>
-  <input id="selling-price" name="selling_price" type="number" min="0" value="<%= @product.selling_price() %>">
-  <label for="manufacturer-id">Manufacturer:</label>
-  <select id="manufacturer-id" name="manufacturer_id">
-    <% for manufacturer in @manufacturers %>
-        <% selected_manufacturer = ( manufacturer.id == @product.manufacturer_id ) ? "selected" : "" %>
-        <option id="manufacturer-id" name="manufacturer_id" value="<%= manufacturer.id %>" <%= selected_manufacturer %> ><%= manufacturer.name %></option>
-    <% end %>
-  </select>
-  <label for="category-id">Category:</label>
-  <select id="category-id" name="category_id">
-    <% for category in @categories %>
-        <% selected_category = ( category.id == @product.category_id ) ? "selected" : "" %>
-        <%= p category.name%>
-        <option id="category-id" name="category_id" value="<%= category.id %>" <%= selected_category %> ><%= category.name %></option>
-    <% end %>
-  </select>
-  <input id="hidden" type="hidden" name="_method" value="patch">
-  <input value="Edit Product" type="submit">
-</form>
+<h3>Edit Product</h3>
+<div class="new_container">
+  <form action="/product/<%= @product.id %>" method="POST">
+    <div class="add">
+      <div><label for="name">Name:</label></div>
+      <div><input id="name" name="name" type="text" value="<%= @product.name() %>"></div>
+      <div><label for="description">Description:</label></div>
+      <div><input id="description" name="description" type="text" value="<%= @product.description() %>"></div>
+      <div><label for="stock-quantity">Stock Qty:</label></div>
+      <div><input id="stock-quantity" name="stock_quantity" type="number" min="0" value="<%= @product.stock_quantity() %>"></div>
+      <div><label for="min-stock-level">Min. Stock Level:</label></div>
+      <div><input id="min-stock-level" name="min_stock_level" type="number" min="0" value="<%= @product.min_stock_level() %>"></div>
+      <div><label for="buying-cost">Buying Cost:</label></div>
+      <div><input id="buying-cost" name="buying_cost" type="number" min="0" value="<%= @product.buying_cost() %>"></div>
+      <div><label for="selling-price">Selling Price:</label></div>
+      <div><input id="selling-price" name="selling_price" type="number" min="0" value="<%= @product.selling_price() %>"></div>
+      <div><label for="manufacturer-id">Manufacturer:</label></div>
+      <div><select id="manufacturer-id" name="manufacturer_id">
+        <% for manufacturer in @manufacturers %>
+            <% selected_manufacturer = ( manufacturer.id == @product.manufacturer_id ) ? "selected" : "" %>
+            <option id="manufacturer-id" name="manufacturer_id" value="<%= manufacturer.id %>" <%= selected_manufacturer %> ><%= manufacturer.name %></option>
+        <% end %>
+      </select></div>
+    <div><label for="category-id">Category:</label></div>
+      <div><select id="category-id" name="category_id">
+        <% for category in @categories %>
+            <% selected_category = ( category.id == @product.category_id ) ? "selected" : "" %>
+            <%= p category.name%>
+            <option id="category-id" name="category_id" value="<%= category.id %>" <%= selected_category %> ><%= category.name %></option>
+        <% end %>
+      </select></div>
+      <input id="hidden" type="hidden" name="_method" value="patch">
+      <div class="button_grid"><input class="button" value="Update" type="submit"></div>
+    </div>
+  </form>
+</div>
